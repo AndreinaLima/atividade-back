@@ -5,5 +5,5 @@ import {endereco} from "./models/endereco.js";
 import {curso} from "./models/curso.js";
 
 authenticate(connection).then (() =>{
-connection.sync();
-});
+    connection.sync();
+    });

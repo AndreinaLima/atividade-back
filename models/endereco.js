@@ -1,8 +1,6 @@
 
 import { connection } from "../config/database.js";
 import { DataTypes } from "sequelize";
-import { aluno } from "./aluno.js";
-import { curso } from "./curso.js";
 
 export const endereco = connection.define("endereco", {
 
@@ -36,9 +34,3 @@ export const endereco = connection.define("endereco", {
         defaultValue: "Sem complemento",
     },
 });
-
-endereco.hasOne(aluno);
-aluno.belongsTo(endereco);
-
-endereco.hasMany(curso);
-curso.belongsTo(endereco);
