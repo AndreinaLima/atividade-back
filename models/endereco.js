@@ -2,7 +2,7 @@
 import { connection } from "../config/database.js";
 import { DataTypes } from "sequelize";
 
-export const endereco = connection.define("endereco", {
+export const Endereco = connection.define("endereco", {
 
     uf: {
         type: DataTypes.STRING(2),

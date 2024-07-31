@@ -1,6 +1,6 @@
 import { connection } from "../config/database.js";
 import { DataTypes } from "sequelize";
-import { endereco } from "./endereco.js";
+import { Endereco } from "./endereco.js";
 import { curso } from "./curso.js";
 
 export const aluno = connection.define("aluno", {
@@ -25,8 +25,8 @@ export const aluno = connection.define("aluno", {
   },
 })
 
-aluno.hasOne(endereco)
-endereco.belongsTo(aluno)
+aluno.hasOne(Endereco, {onDelete: "CASCADE"})
+Endereco.belongsTo(aluno)
 
-aluno.hasMany(curso)
+aluno.hasMany(curso, {onDelete: "CASCADE"})
 curso.belongsTo(aluno)
