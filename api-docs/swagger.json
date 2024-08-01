@@ -1,0 +1,205 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Metaverso Code Academy",
+      "version": "1.0.0",
+      "description": "Documentação de API de Protótipo Gerenciamento de Alunos."
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000",
+        "description": "Servidor local"
+      }
+    ],
+    "paths": {
+      "/alunos": {
+        "get": {
+          "summary": "Listar todos os alunos",
+          "responses": {
+            "200": {
+              "description": "Lista de alunos",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Aluno"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Criar um novo aluno",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aluno"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Aluno criado com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Aluno"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/alunos/{id}": {
+        "get": {
+          "summary": "Buscar um aluno por ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Aluno encontrado",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Aluno"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Aluno não encontrado"
+            }
+          }
+        },
+        "put": {
+          "summary": "Atualizar um aluno existente",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aluno"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Aluno atualizado com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Aluno"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Aluno não encontrado"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Excluir um aluno por ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Aluno removido com sucesso"
+            },
+            "404": {
+              "description": "Aluno não encontrado"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Aluno": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "example": 1
+            },
+            "matricula": {
+              "type": "string",
+              "example": "123456"
+            },
+            "nome": {
+              "type": "string",
+              "example": "João Silva"
+            },
+            "email": {
+              "type": "string",
+              "example": "joao@example.com"
+            },
+            "telefone": {
+              "type": "string",
+              "example": "(11) 98765-4321"
+            },
+            "endereco": {
+              "type": "object",
+              "properties": {
+                "rua": {
+                  "type": "string",
+                  "example": "Rua das Flores"
+                },
+                "numero": {
+                  "type": "string",
+                  "example": "123"
+                },
+                "cidade": {
+                  "type": "string",
+                  "example": "São Paulo"
+                },
+                "uf": {
+                  "type": "string",
+                  "example": "SP"
+                },
+                "cep": {
+                  "type": "string",
+                  "example": "01234-567"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
