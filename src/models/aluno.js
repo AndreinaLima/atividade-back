@@ -23,10 +23,20 @@ export const aluno = connection.define("aluno", {
     allowNull: false,
     unique: true,
   },
+  senha: { 
+    type: DataTypes.STRING, 
+    allowNull: false },
 })
 
 aluno.hasOne(Endereco, {onDelete: "CASCADE"})
 Endereco.belongsTo(aluno)
 
-aluno.hasMany(curso, {onDelete: "CASCADE"})
-curso.belongsTo(aluno)
+aluno.belongsToMany(curso, {
+  through: ("aluno_cursos")
+})
+
+curso.belongsToMany(aluno,{
+  through: ("aluno_cursos")
+})
+  
+
