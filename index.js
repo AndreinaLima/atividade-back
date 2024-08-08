@@ -3,6 +3,7 @@ import express from "express";
 import { rotasAluno } from "./src/routers/alunos.js";
 import { readFileSync } from "fs";
 import path from "path";
+import cors from "cors";
 
 import swaggerUi from "swagger-ui-express";
 
@@ -16,6 +17,8 @@ const swaggerDocument = JSON.parse(
 
 const app = express()
 app.use(express.json())
+
+app.use(cors({ origin: "http://localhost:5173" }));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
