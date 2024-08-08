@@ -1,11 +1,12 @@
 import { connection, authenticate } from "./src/config/database.js";
 import express from "express";
 import { rotasAluno } from "./src/routers/alunos.js";
+import { rotasCurso } from "./src/routers/cursos.js";
 import { readFileSync } from "fs";
 import path from "path";
 import cors from "cors";
-
 import swaggerUi from "swagger-ui-express";
+
 
 authenticate(connection).then (() =>{
     connection.sync();
@@ -23,6 +24,7 @@ app.use(cors({ origin: "http://localhost:5173" }));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(rotasAluno);
+app.use(rotasCurso);
 
 app.listen(3000, () => {
   console.log("Servidor rodando em http://localhost:3000/");
