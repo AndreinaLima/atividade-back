@@ -5,14 +5,14 @@ import { Sequelize } from "sequelize";
 
 //Obejto usado na conexão com o banco de dados.
 export const connection = new Sequelize(
-    process.env.DB_NAME, //Acessa o valor da variavel DB_NAME
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
-    {
-        host: process.env.DB_HOST,
-        dialect: "mysql",
-    }
-);
+  process.env.DB_NAME, //Acessa o valor da variavel DB_NAME
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST || 3000,
+    dialect: "mysql",
+  }
+)
 
 export async function authenticate(connection){
     // Testar a conexão com o banco mysql
