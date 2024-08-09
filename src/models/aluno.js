@@ -6,7 +6,7 @@ import { curso } from "./curso.js";
 export const aluno = connection.define("aluno", {
   matricula: {
     type: DataTypes.STRING(6),
-    allowNull: false,
+    allowNull: true,
     unique: true,
   },
   nome: {
